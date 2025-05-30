@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Fixtures</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+  <div class="nav-left">
+    <a href="/fixtures" class="nav-logo">⚽ Fixtures</a>
+  </div>
+  <div class="nav-links">
+    <a href="#today-fixtures">Today</a>
+    <a href="#next7-fixtures">Next 7 Days</a>
+  </div>
+</nav>
+
+    <header>
+      <h1>⚽ Soccer Fixtures</h1>
+      <p class="current-date"><%= todayDate %></p>
+    </header>
+
+    <!-- Today's Fixtures -->
+    <section class="category">
+      <h2>Today's Matches</h2>
+      <% if (categorized.today.length > 0) { %>
+        <div class="fixtures-grid" id="today-fixtures">
+          <% categorized.today.slice(0, 21).forEach((fixture, index) => { %>
+            <div class="fixture-card" data-status="<%= fixture.status %>">
+              <div class="league-info">
+                <span class="league"><%= fixture.league %></span>
+                <span class="country"><%= fixture.country %></span>
+                <span class="status"><%= fixture.status %></span>
+              </div>
+              
+              <div class="match-details">
+                <div class="team home-team">
+                  <% if (fixture.homeLogo && fixture.homeLogo !== '/images/placeholder.png') { %>
+                    <img src="<%= fixture.homeLogo %>" alt="<%= fixture.homeTeam %>" onerror="this.src='/images/placeholder.png'">
+                  <% } %>
+                  <span><%= fixture.homeTeam %></span>
+                </div>
+                
+                <div class="match-center">
+                  <div class="score"><%= fixture.score %></div>
+                  <div class="vs">VS</div>
+                  <div class="time"><%= fixture.date.split(',')[1].trim() %></div>
+                  <div class="date"><%= fixture.date.split(',')[0].trim() %></div>
+                </div>
+                
+                <div class="team away-team">
+                  <% if (fixture.awayLogo && fixture.awayLogo !== '/images/placeholder.png') { %>
+                    <img src="<%= fixture.awayLogo %>" alt="<%= fixture.awayTeam %>" onerror="this.src='/images/placeholder.png'">
+                  <% } %>
+                  <span><%= fixture.awayTeam %></span>
+                </div>
+              </div>
+              
+              <div class="match-meta">
+                <div class="venue">🏟️ <%= fixture.venue %></div>
+                <div class="halftime">⏱️ HT: <%= fixture.halftime %></div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+        <% if (categorized.today.length > 20) { %>
+          <button class="load-more" data-section="today" data-remaining='<%= JSON.stringify(categorized.today.slice(20)) %>'>Load More</button>
+        <% } %>
+      <% } else { %>
+        <p class="no-matches">No matches scheduled for today</p>
+      <% } %>
+    </section>
+
+    <!-- Next 7 Days -->
+    <section class="category">
+      <h2>Next 7 Days</h2>
+      <% if (categorized.next7.length > 0) { %>
+        <div class="fixtures-grid" id="next7-fixtures">
+          <% categorized.next7.slice(0, 21).forEach((fixture, index) => { %>
+            <div class="fixture-card" data-status="<%= fixture.status %>">
+              <div class="league-info">
+                <span class="league"><%= fixture.league %></span>
+                <span class="country"><%= fixture.country %></span>
+                <span class="status"><%= fixture.status %></span>
+              </div>
+              
+              <div class="match-details">
+                <div class="team home-team">
+                  <% if (fixture.homeLogo && fixture.homeLogo !== '/images/placeholder.png') { %>
+                    <img src="<%= fixture.homeLogo %>" alt="<%= fixture.homeTeam %>" onerror="this.src='/images/placeholder.png'">
+                  <% } %>
+                  <span><%= fixture.homeTeam %></span>
+                </div>
+                
+                <div class="match-center">
+                  <div class="score"><%= fixture.score %></div>
+                  <div class="vs">VS</div>
+                  <div class="time"><%= fixture.date.split(',')[1].trim() %></div>
+                  <div class="date"><%= fixture.date.split(',')[0].trim() %></div>
+                </div>
+                
+                <div class="team away-team">
+                  <% if (fixture.awayLogo && fixture.awayLogo !== '/images/placeholder.png') { %>
+                    <img src="<%= fixture.awayLogo %>" alt="<%= fixture.awayTeam %>" onerror="this.src='/images/placeholder.png'">
+                  <% } %>
+                  <span><%= fixture.awayTeam %></span>
+                </div>
+              </div>
+              
+              <div class="match-meta">
+                <div class="venue">🏟️ <%= fixture.venue %></div>
+                <div class="halftime">⏱️ HT: <%= fixture.halftime %></div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+        <% if (categorized.next7.length > 20) { %>
+          <button class="load-more" data-section="next7" data-remaining='<%= JSON.stringify(categorized.next7.slice(20)) %>'>Load More</button>
+        <% } %>
+      <% } else { %>
+        <p class="no-matches">No matches scheduled in the next 7 days</p>
+      <% } %>
+    </section>
+
+    <!-- Next 15 Days -->
+    <section class="category">
+      <h2>Next 15 Days</h2>
+      <% if (categorized.next15.length > 0) { %>
+        <div class="fixtures-grid" id="next15-fixtures">
+          <% categorized.next15.slice(0, 20).forEach((fixture, index) => { %>
+            <div class="fixture-card" data-status="<%= fixture.status %>">
+              <div class="league-info">
+                <span class="league"><%= fixture.league %></span>
+                <span class="country"><%= fixture.country %></span>
+                <span class="status"><%= fixture.status %></span>
+              </div>
+              
+              <div class="match-details">
+                <div class="team home-team">
+                  <% if (fixture.homeLogo && fixture.homeLogo !== '/images/placeholder.png') { %>
+                    <img src="<%= fixture.homeLogo %>" alt="<%= fixture.homeTeam %>" onerror="this.src='/images/placeholder.png'">
+                  <% } %>
+                  <span><%= fixture.homeTeam %></span>
+                </div>
+                
+                <div class="match-center">
+                  <div class="score"><%= fixture.score %></div>
+                  <div class="vs">VS</div>
+                  <div class="time"><%= fixture.date.split(',')[1].trim() %></div>
+                  <div class="date"><%= fixture.date.split(',')[0].trim() %></div>
+                </div>
+                
+                <div class="team away-team">
+                  <% if (fixture.awayLogo && fixture.awayLogo !== '/images/placeholder.png') { %>
+                    <img src="<%= fixture.awayLogo %>" alt="<%= fixture.awayTeam %>" onerror="this.src='/images/placeholder.png'">
+                  <% } %>
+                  <span><%= fixture.awayTeam %></span>
+                </div>
+              </div>
+              
+              <div class="match-meta">
+                <div class="venue">🏟️ <%= fixture.venue %></div>
+                <div class="halftime">⏱️ HT: <%= fixture.halftime %></div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+        <% if (categorized.next15.length > 20) { %>
+          <button class="load-more" data-section="next15" data-remaining='<%= JSON.stringify(categorized.next15.slice(20)) %>'>Load More</button>
+        <% } %>
+      <% } else { %>
+        <p class="no-matches">No matches scheduled in the next 15 days</p>
+      <% } %>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div><p>Coordinated Universal Time (UTC). Data fetched from <a href="https://dashboard.api-football.com/" target="_blank" rel="noopener">dashboard.api-football.com</a>.</p></div>
+      <div>Created By Nabh Yadav</div>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('.load-more').forEach(button => {
+      button.addEventListener('click', function() {
+        const section = this.getAttribute('data-section');
+        const fixturesGrid = document.getElementById(`${section}-fixtures`);
+        let remainingFixtures = JSON.parse(this.getAttribute('data-remaining') || '[]');
+        
+        // Load the next 20 fixtures
+        const nextFixtures = remainingFixtures.slice(0, 20);
+        remainingFixtures = remainingFixtures.slice(20);
+        
+        nextFixtures.forEach(fixture => {
+          const fixtureCard = document.createElement('div');
+          fixtureCard.className = 'fixture-card';
+          fixtureCard.setAttribute('data-status', fixture.status || '');
+          
+          // Escape HTML to prevent XSS and ensure proper rendering
+          const escapeHTML = str => str ? String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;') : '';
+          
+          // Build home team HTML
+          const homeTeamImage = (fixture.homeLogo && fixture.homeLogo !== '/images/placeholder.png') 
+            ? `<img src="${escapeHTML(fixture.homeLogo)}" alt="${escapeHTML(fixture.homeTeam)}" onerror="this.remove()">` 
+            : '';
+          
+          // Build away team HTML
+          const awayTeamImage = (fixture.awayLogo && fixture.awayLogo !== '/images/placeholder.png') 
+            ? `<img src="${escapeHTML(fixture.awayLogo)}" alt="${escapeHTML(fixture.awayTeam)}" onerror="this.remove()">` 
+            : '';
+          
+          // Build fixture card HTML
+          fixtureCard.innerHTML = `
+            <div class="league-info">
+              <span class="league">${escapeHTML(fixture.league)}</span>
+              <span class="country">${escapeHTML(fixture.country)}</span>
+              <span class="status">${escapeHTML(fixture.status)}</span>
+            </div>
+            <div class="match-details">
+              <div class="team home-team">
+                ${homeTeamImage}
+                <span>${escapeHTML(fixture.homeTeam)}</span>
+              </div>
+              <div class="match-center">
+                <div class="score">${escapeHTML(fixture.score)}</div>
+                <div class="vs">VS</div>
+                <div class="time">${escapeHTML(fixture.date.split(',')[1]?.trim() || '')}</div>
+                <div class="date">${escapeHTML(fixture.date.split(',')[0]?.trim() || '')}</div>
+              </div>
+              <div class="team away-team">
+                ${awayTeamImage}
+                <span>${escapeHTML(fixture.awayTeam)}</span>
+              </div>
+            </div>
+            <div class="match-meta">
+              <div class="venue">🏟️ ${escapeHTML(fixture.venue)}</div>
+              <div class="halftime">⏱️ HT: ${escapeHTML(fixture.halftime)}</div>
+            </div>
+          `;
+          
+          // Append to grid
+          fixturesGrid.appendChild(fixtureCard);
+        });
+        
+        // Update the remaining fixtures
+        this.setAttribute('data-remaining', JSON.stringify(remainingFixtures));
+        
+        // Hide the button if no more fixtures remain
+        if (remainingFixtures.length === 0) {
+          this.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
