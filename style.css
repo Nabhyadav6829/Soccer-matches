@@ -1,0 +1,373 @@
+:root {
+  --primary: #1e3a8a;
+  --secondary: #dc2626;
+  --light: #f8fafc;
+  --dark: #0f172a;
+  --success: #16a34a;
+  --warning: #ca8a04;
+  --danger: #b91c1c;
+  --gray: #94a3b8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px 0;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+header h1 {
+  color: var(--primary);
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.current-date {
+  color: #475569;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.category {
+  margin-bottom: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.category h2 {
+  background: var(--primary);
+  color: white;
+  padding: 16px 24px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.fixtures-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  padding: 24px;
+}
+
+.fixture-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.fixture-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.league-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.league {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 0.95rem;
+}
+
+.country {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status[data-status="FT"] { background: var(--success); color: white; }
+.status[data-status="NS"] { background: var(--primary); color: white; }
+.status[data-status="CANC"] { background: var(--danger); color: white; }
+.status[data-status="PST"] { background: var(--warning); color: white; }
+.status[data-status="HT"] { background: #0891b2; color: white; }
+.status[data-status="1H"] { background: #0d9488; color: white; }
+.status[data-status="2H"] { background: #0284c7; color: white; }
+
+.match-details {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+}
+
+.team {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.team img {
+  height: 60px;
+  width: 60px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.team span {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.match-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 15px;
+}
+
+.score {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: var(--dark);
+}
+
+.vs {
+  font-size: 0.9rem;
+  color: var(--gray);
+  font-weight: 500;
+}
+
+.time {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.match-meta {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.venue, .halftime {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.no-matches {
+  text-align: center;
+  padding: 40px 20px;
+  color: #64748b;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.error-message {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+.error-message p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: var(--danger);
+}
+
+.btn {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .fixtures-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .match-details {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .team {
+    flex-direction: row;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .team img {
+    margin-bottom: 0;
+  }
+  
+  .match-center {
+    margin: 10px 0;
+  }
+}
+
+
+
+.load-more {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #007bff; /* Primary blue, adjust to match your theme */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.load-more:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.load-more:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); /* Focus ring for accessibility */
+}
+
+.match-center .date {
+  font-size: 0.9rem; /* Slightly smaller than typical text, matching time */
+  color: #666; /* Subtle color to match typical secondary info */
+  text-align: center; /* Center-align to match time and score */
+  margin-top: 4px; /* Small spacing from time above */
+  font-weight: 400; /* Regular weight for consistency */
+}
+.site-footer {
+  margin-top: 40px;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666; /* Matches .date color for consistency */
+  border-top: 1px solid #e0e0e0; /* Subtle separator */
+}
+
+.site-footer a {
+  color: #007bff; /* Matches .load-more button color */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+  color: #0056b3; /* Matches .load-more hover color */
+  text-decoration: underline;
+}
+
+
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary);
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.nav-logo {
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--light);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links a {
+    padding: 8px 0;
+  }
+}
+
