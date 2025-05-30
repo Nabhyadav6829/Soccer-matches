@@ -114,4 +114,4 @@ Created by Nabh Yadav 👨‍💻
 Data provided by Football API ⚽
 
 📬 Contact
-For issues or suggestions, please open an issue on GitHub or contact [your-email@example.com]. ✉️
+For issues or suggestions, please open an issue on GitHub or contact [nabhyadav6829@gmail.com]. ✉️
